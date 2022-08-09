@@ -28,7 +28,7 @@ async function getRequest(maxTweet, tweetQuery) {
   }
 }
 
-router.get("/", async (req, res) => {
+router.post("/", async (req, res) => {
   const { maxTweets, tweetQuery } = req.body;
   const response = await getRequest(maxTweets, tweetQuery);
   res.json({ response });
