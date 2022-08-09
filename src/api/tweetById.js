@@ -4,10 +4,12 @@ const bearer = process.env.BEARER_TOKEN;
 
 const router = express.Router();
 
-async function getRequest(username) {
-  const url = `https://api.twitter.com/2/users/by/username/${username}`;
+async function getRequest(id) {
+  const url = `https://api.twitter.com/2/tweets/${id}`;
   const params = {
     "user.fields": "profile_image_url,verified",
+    "tweet.fields": "author_id,public_metrics",
+    "expansions" : "author_id"
   };
 
   const res = await needle("get", url, params, {
@@ -24,9 +26,9 @@ async function getRequest(username) {
   }
 }
 
-router.get("/:username", async (req, res) => {
-  const { username } = req.params;
-  const response = await getRequest(username);
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
+  const response = await getRequest(id);
   res.json({ response });
 });
 

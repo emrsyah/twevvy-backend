@@ -3,6 +3,7 @@ const express = require('express');
 const twitterProfile = require('./twitterProfile');
 const twitterCountRecent = require('./twitterCountRecent');
 const tweetRecent = require('./tweetRecent');
+const tweetById = require('./tweetById');
 
 const router = express.Router();
 
@@ -15,5 +16,6 @@ router.get('/', (req, res) => {
 router.use('/twitterProfile', twitterProfile);
 router.use('/countRecent', twitterCountRecent);
 router.use('/tweetRecent', tweetRecent);
+router.use('/tweetById', tweetById);
 
 module.exports = router;

@@ -9,7 +9,7 @@ async function getRequest(maxTweet, tweetQuery) {
   const params = {
     "query": tweetQuery,
     "max_results": maxTweet,
-    "user.fields": "profile_image_url",
+    "user.fields": "profile_image_url,verified",
     "tweet.fields": "author_id,public_metrics",
     "expansions" : "author_id"
   };
