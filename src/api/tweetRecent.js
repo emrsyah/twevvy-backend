@@ -6,7 +6,7 @@ const router = express.Router();
 
 async function getRequest(maxTweet, tweetQuery) {
   return {
-    maxTweet
+    maxTweet, tweetQuery
   }
   const url = `https://api.twitter.com/2/tweets/search/recent`;
   const params = {
@@ -32,6 +32,9 @@ async function getRequest(maxTweet, tweetQuery) {
 }
 
 router.post("/", async (req, res) => {
+  res.json({
+    maxTweets, tweetQuery
+  })
   const { maxTweets, tweetQuery } = req.body;
   const intMaxTweets = parseInt(maxTweets);
   const response = await getRequest(intMaxTweets, tweetQuery);
