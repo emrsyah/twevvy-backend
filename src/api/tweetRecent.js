@@ -10,7 +10,8 @@ async function getRequest(maxTweet, tweetQuery) {
     "query": tweetQuery,
     "max_results": maxTweet,
     "user.fields": "profile_image_url",
-    "tweet.fields": "author_id",
+    "tweet.fields": "author_id,public_metrics",
+    "expansions" : "author_id"
   };
 
   const res = await needle("get", url, params, {
