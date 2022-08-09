@@ -7,11 +7,11 @@ const router = express.Router();
 async function getRequest(maxTweet, tweetQuery) {
   const url = `https://api.twitter.com/2/tweets/search/recent`;
   const params = {
-    "query": tweetQuery,
-    "max_results": maxTweet,
+    query: tweetQuery,
+    max_results: maxTweet,
     "user.fields": "profile_image_url,verified",
     "tweet.fields": "author_id,public_metrics",
-    "expansions" : "author_id"
+    expansions: "author_id",
   };
 
   const res = await needle("get", url, params, {
@@ -30,7 +30,8 @@ async function getRequest(maxTweet, tweetQuery) {
 
 router.post("/", async (req, res) => {
   const { maxTweets, tweetQuery } = req.body;
-  const response = await getRequest(maxTweets, tweetQuery);
+  const intMaxTweets = parseInt(maxTweets);
+  const response = await getRequest(intMaxTweets, tweetQuery);
   res.json({ response });
 });
 
