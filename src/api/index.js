@@ -1,6 +1,5 @@
 const express = require('express');
 
-const emojis = require('./emojis');
 const twitterProfile = require('./twitterProfile');
 const twitterCountRecent = require('./twitterCountRecent');
 const tweetRecent = require('./tweetRecent');
@@ -13,7 +12,6 @@ router.get('/', (req, res) => {
   });
 });
 
-router.use('/emojis', emojis);
 router.use('/twitterProfile', twitterProfile);
 router.use('/countRecent', twitterCountRecent);
 router.use('/tweetRecent', tweetRecent);
