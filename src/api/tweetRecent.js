@@ -5,6 +5,9 @@ const bearer = process.env.BEARER_TOKEN;
 const router = express.Router();
 
 async function getRequest(maxTweet, tweetQuery) {
+  return {
+    maxTweet
+  }
   const url = `https://api.twitter.com/2/tweets/search/recent`;
   const params = {
     query: tweetQuery,
