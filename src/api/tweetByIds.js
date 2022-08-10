@@ -9,7 +9,7 @@ async function getRequest(ids) {
   const params = {
     "ids": ids,
     "user.fields": "profile_image_url,verified",
-    "tweet.fields": "author_id,public_metrics",
+    "tweet.fields": "author_id,public_metrics,created_at",
     "expansions" : "author_id"
   };
 
@@ -27,7 +27,7 @@ async function getRequest(ids) {
   }
 }
 
-router.get("/", async (req, res) => {
+router.post("/", async (req, res) => {
   const { ids } = req.body;
   const response = await getRequest(ids);
   res.json({ response });

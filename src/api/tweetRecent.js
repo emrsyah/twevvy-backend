@@ -10,7 +10,7 @@ async function getRequest(maxTweet, tweetQuery) {
     query: tweetQuery,
     max_results: maxTweet,
     "user.fields": "profile_image_url,verified",
-    "tweet.fields": "author_id,public_metrics",
+    "tweet.fields": "author_id,public_metrics,created_at",
     expansions: "author_id",
   };
 
