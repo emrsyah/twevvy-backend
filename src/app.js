@@ -7,15 +7,27 @@ require("dotenv").config();
 
 const middlewares = require("./middlewares");
 const api = require("./api");
-// const bearer = process.env.BEARER_TOKEN;
-// console.log(bearer)
-
 const app = express();
 
 app.use(morgan("dev"));
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+
+app.use(function (req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,content-type"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", true);
+
+  next();
+});
 
 app.get("/", (req, res) => {
   res.json({
