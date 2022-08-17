@@ -16,6 +16,8 @@ app.use(express.json());
 
 app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
+  res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
   res.setHeader(
     "Access-Control-Allow-Methods",
     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
